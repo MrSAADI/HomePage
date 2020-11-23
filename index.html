@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+	<style>
+	
+		:root{
+			--color-bg:#000;
+			--color-text:#f3f3f3;
+		}
+		
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: 'Open Sans', sans-serif;
+		}
+		
+		body{
+			background-color: var(--color-bg);
+			width:100vw;
+			height:100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			color: var(--color-text);
+
+		}
+		
+		#watch{
+			font-size: 10rem;
+		}
+		
+		#hello{
+			font-size: 4rem;
+		}
+	</style>
+
+    <title>Home Page</title>
+  </head>
+  <body>
+	<div id="content">
+	<h1 id="watch">22:12</h1>
+	<p id="hello">good morning</p>
+	</div>
+	
+	<script>
+		function currentTime() {
+		  let date = new Date(); /* creating object of Date class */
+		  let hour = date.getHours();
+		  let min = date.getMinutes();
+		  hour = updateTime(hour);
+		  min = updateTime(min);
+		  document.getElementById("watch").innerText = hour + ":" + min;
+			let t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */
+		
+		  let greetings = "";
+		
+		  if(hour>=5 && hour<12){
+			  greetings = "Morning";
+		  }else if(hour>=12 && hour<17){
+			  greetings = "Afternoon";
+		  }else if(hour>=17 && hour<0){
+			  greetings = "Evening";
+		  }else{
+			  greetings = "Night";
+		  }
+		  document.getElementById("hello").innerText = `Good ${greetings}`;
+		}
+		
+		
+		
+		function updateTime(k) {
+		  if (k < 10) {
+			return "0" + k;
+		  }
+		  else {
+			return k;
+		  }
+		}
+
+		currentTime();
+	</script>
+  </body>
+</html>
